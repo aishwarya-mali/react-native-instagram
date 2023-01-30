@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     position: 'absolute', 
     top: -5, 
     right: -5, 
-    fontSize: 12, 
+    fontSize: 10, 
     padding: 2, 
     borderRadius: 5
   }
