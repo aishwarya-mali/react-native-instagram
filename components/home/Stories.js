@@ -15,13 +15,14 @@ const Stories = () => {
 }
 
 function User({ user }) {
+    const userName = user.name.length > 11 ? user.name.slice(0, 11) + '...' : user.name
     return (
         <View style={styles.userContainer}>
             <Image
                 source={user.image}
                 style={styles.user}
             />
-            <Text style={{ color: 'white' }}>{user.name}</Text>
+            <Text style={{ color: 'white' }}>{userName}</Text>
         </View>
     )
 }
