@@ -4,7 +4,7 @@ import { Users } from '../../data/users'
 
 const Stories = () => {
     return (
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} contentContainerStyle={{height: 100}}>
             <View style={styles.container}>
                 {Users.map(user => (
                     <User key={user.id} user={user} />
@@ -30,8 +30,6 @@ function User({ user }) {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 10,
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
         flexDirection: 'row',
     },
     userContainer: {
