@@ -29,7 +29,6 @@ function User({ user }) {
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 10,
         flexDirection: 'row',
     },
     userContainer: {
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 100,
-        borderColor: 'orange',
+        borderColor: '#fff',
         borderWidth: 3
     },
 })
