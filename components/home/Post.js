@@ -4,9 +4,8 @@ import { ScrollView } from "react-native";
 import { Posts } from "../../data/posts";
 
 const Post = () => {
-  console.log(Post)
   return (
-    <ScrollView contentContainerStyle={{ padding: 5 }}>
+    <ScrollView contentContainerStyle={{ paddingHorizontal: 5, paddingBottom: 5 }}>
       {Posts.map((post, id) => (
         <View key={id} style={{ paddingBottom: 10 }}>
           <PostHeader post={post} />
@@ -38,10 +37,18 @@ const Post = () => {
 
 function PostFooter({ post }) {
   return <>
-    <View style={{ paddingLeft: 5, paddingTop: 2 }}>
-      <Image source={{ uri: 'https://img.icons8.com/fluency-systems-regular/60/ffffff/like--v1.png' }} style={{ width: 30, height: 30 }} />
+    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={styles.iconStyles}>
+        <Image source={require('../../assets/like.png')} style={{ width: 25, height: 25 }} />
+      </View>
+      <View style={styles.iconStyles}>
+        <Image source={require('../../assets/comment.png')} style={{ width: 25, height: 25 }} />
+      </View>
+      <View style={styles.iconStyles}>
+        <Image source={require('../../assets/share.png')} style={{ width: 25, height: 25 }} />
+      </View>
     </View>
-    <View style={{ paddingLeft: 5, paddingTop: 2 }}>
+    <View style={styles.iconStyles}>
       <Text style={styles.textStyle}>{`${post.likes} like${post.likes > 1 ? 's' : ''}`}</Text>
     </View>
     <View style={{ flexDirection: 'row', paddingLeft: 5, paddingTop: 2 }}>
@@ -82,7 +89,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 500,
     resizeMode: 'cover'
-  }
+  },
+  iconStyles:{ paddingLeft: 5, paddingVertical: 5 }
 });
 
 export default Post;
