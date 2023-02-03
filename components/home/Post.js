@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Pressable } from "react-native";
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import { Posts } from "../../data/posts";
+import LikeIcon from '../../assets/like.png';
+import LikedIcon from '../../assets/liked.png';
 
 const Post = () => {
   return (
@@ -36,11 +38,20 @@ const Post = () => {
 };
 
 function PostFooter({ post }) {
+
+  const [isLiked, setIsLiked] = useState(true);
+  const [likes, setLikes] = useState(post.likes)
+  function changeImage() {
+    setIsLiked(previousState => !previousState)
+    isLiked ? setLikes(likes + 1) : setLikes(likes - 1)
+  }
+  let imagePath = isLiked ? LikeIcon : LikedIcon
+
   return <>
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <View style={styles.iconStyles}>
-        <Image source={require('../../assets/like.png')} style={{ width: 25, height: 25 }} />
-      </View>
+    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <TouchableOpacity style={styles.iconStyles} onPress={() => changeImage()}>
+        <Image source={imagePath} style={{ width: 25, height: 25 }} />
+      </TouchableOpacity>
       <View style={styles.iconStyles}>
         <Image source={require('../../assets/comment.png')} style={{ width: 25, height: 25 }} />
       </View>
@@ -49,7 +60,7 @@ function PostFooter({ post }) {
       </View>
     </View>
     <View style={styles.iconStyles}>
-      <Text style={styles.textStyle}>{`${post.likes} like${post.likes > 1 ? 's' : ''}`}</Text>
+      <Text style={styles.textStyle}>{`${likes} like${post.likes > 1 ? 's' : ''}`}</Text>
     </View>
     <View style={{ flexDirection: 'row', paddingLeft: 5, paddingTop: 2 }}>
       <Text style={{ ...styles.textStyle, fontWeight: 'bold' }}>{Posts[0].userName}</Text>
@@ -90,7 +101,7 @@ const styles = StyleSheet.create({
     height: 500,
     resizeMode: 'cover'
   },
-  iconStyles:{ paddingLeft: 5, paddingVertical: 5 }
+  iconStyles: { paddingLeft: 5, paddingVertical: 5 }
 });
 
 export default Post;
