@@ -62,17 +62,23 @@ function PostFooter({ post }) {
     <View style={styles.iconStyles}>
       <Text style={styles.textStyle}>{`${likes} like${post.likes > 1 ? 's' : ''}`}</Text>
     </View>
-    <View style={{ flexDirection: 'row', paddingLeft: 5, paddingTop: 2 }}>
-      <Text style={{ ...styles.textStyle, fontWeight: 'bold' }}>{Posts[0].userName}</Text>
-      <Text style={{ ...styles.textStyle, marginLeft: 3 }}>{post.caption}</Text>
+    <View style={{ flexDirection: 'row', paddingTop: 2, ...styles.iconStyles }}>
+      <Text style={styles.textStyle}>
+        <Text style={{ fontWeight: 'bold'}}>{Posts[0].userName}</Text>
+        <Text> {post.caption}</Text>
+      </Text>
     </View>
-    {post.comments.map((comment, i) => (
-      <View key={i} style={{ flexDirection: 'row', paddingLeft: 5, paddingTop: 2 }}>
-        <Text style={{ ...styles.textStyle, fontWeight: 'bold' }}>{comment.name}</Text>
-        <Text style={{ ...styles.textStyle, marginLeft: 3 }}>{comment.comment}</Text>
-      </View>
+    {post.comments?.map((comment, i) => (
+      <Comments key={i} comment={comment}/>
     ))}
   </>
+
+  function Comments({comment}) {
+    return <View style={{ flexDirection: 'row', paddingLeft: 5 }}>
+      <Text style={{ ...styles.textStyle, fontWeight: 'bold' }}>{comment.name}</Text>
+      <Text style={{ ...styles.textStyle, marginLeft: 3 }}>{comment.comment}</Text>
+    </View>;
+  }
 }
 
 const styles = StyleSheet.create({
