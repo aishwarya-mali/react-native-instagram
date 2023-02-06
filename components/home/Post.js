@@ -64,16 +64,21 @@ function PostFooter({ post }) {
     </View>
     <View style={{ flexDirection: 'row', paddingTop: 2, ...styles.iconStyles }}>
       <Text style={styles.textStyle}>
-        <Text style={{ fontWeight: 'bold'}}>{Posts[0].userName}</Text>
+        <Text style={{ fontWeight: 'bold' }}>{Posts[0].userName}</Text>
         <Text> {post.caption}</Text>
       </Text>
     </View>
+    {!!post.comments.length && (
+      <View style={{ paddingLeft: 5 }}>
+        <Text style={{ color: 'gray' }}>{`View ${post.comments.length > 1 ? 'all' : ''} ${post.comments.length} comment${post.comments.length > 1 ? 's' : ''}`}</Text>
+      </View>
+    )}
     {post.comments?.map((comment, i) => (
-      <Comments key={i} comment={comment}/>
+      <Comments key={i} comment={comment} />
     ))}
   </>
 
-  function Comments({comment}) {
+  function Comments({ comment }) {
     return <View style={{ flexDirection: 'row', paddingLeft: 5 }}>
       <Text style={{ ...styles.textStyle, fontWeight: 'bold' }}>{comment.name}</Text>
       <Text style={{ ...styles.textStyle, marginLeft: 3 }}>{comment.comment}</Text>
