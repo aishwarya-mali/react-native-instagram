@@ -4,7 +4,7 @@ import { Users } from '../../data/users'
 
 const Stories = () => {
     return (
-        <ScrollView horizontal={true} contentContainerStyle={{height: 100}}>
+        <ScrollView horizontal={true} contentContainerStyle={{height: 130}}>
             <View style={styles.container}>
                 {Users.map(user => (
                     <User key={user.id} user={user} />
@@ -22,7 +22,7 @@ function User({ user }) {
                 source={user.image}
                 style={styles.user}
             />
-            <Text style={{ color: 'white' }}>{userName}</Text>
+            <Text style={{ color: 'white', fontSize: 12 }}>{userName}</Text>
         </View>
     )
 }

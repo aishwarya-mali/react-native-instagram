@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 10,
     paddingVertical: 5,
-    height: 50
+    height: 45
   },
   logo: {
     width: 100,

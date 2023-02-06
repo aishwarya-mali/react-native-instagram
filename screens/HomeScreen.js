@@ -4,6 +4,7 @@ import Header from '../components/home/Header'
 import Stories from '../components/home/Stories'
 import Post from '../components/home/Post'
 import Separator from '../components/Separator'
+import BottomTabs from '../components/home/BottomTabs'
 
 export default function HomeScreen() {
   return (
@@ -12,6 +13,8 @@ export default function HomeScreen() {
       <Stories />
       <Separator />
       <Post />
+      <Separator />
+      <BottomTabs />
     </SafeAreaView>
   )
 }

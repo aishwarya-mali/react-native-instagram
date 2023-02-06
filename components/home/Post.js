@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   postImage: {
     width: '100%',
-    height: 500,
+    height: 450,
     resizeMode: 'cover'
   },
   iconStyles: { paddingLeft: 5, paddingVertical: 5 }
